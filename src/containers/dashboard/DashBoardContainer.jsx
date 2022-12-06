@@ -45,7 +45,6 @@ const DashBoardContainer = props => {
   const usuarios = useSelector(selectAllUsarios);
   const datosSinRepetir = useSelector(selectDatosSinRepetir)
 
-  console.log("DATOS",datosSinRepetir)
 
   const ordenesPorEstado = [
     { name: "Terminadas", value: cantOrdenesFinalizadas, color: "success" },
@@ -63,7 +62,6 @@ const DashBoardContainer = props => {
     { name: "Sin empezar", value: cantTareasSinComenzar, color: "warning" },
   ];
 
-  console.log("ordenes",ordenesWithDatos)
 
  
 

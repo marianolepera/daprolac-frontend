@@ -69,7 +69,7 @@ const DashBoard = (props) => {
       </Grid>
 
       <Grid container spacing={4}>
-        <Grid item lg={6} md={6} sm={6} xs={12}>
+        {/* <Grid item lg={6} md={6} sm={6} xs={12}>
           <Widget title="Control de ordenes" upperTitle className={classes.card}>
               <TextField
                 style={{width:"100%"}}
@@ -94,9 +94,9 @@ const DashBoard = (props) => {
                 ))
             }
           </Widget>
-        </Grid>
+        </Grid> */}
 
-        <Grid item lg={6} md={6} sm={6} xs={12}>
+        <Grid item lg={12} md={12} sm={12} xs={12}>
         <Widget title="Control de tareas" upperTitle className={classes.card}>
           <Grid container spacing={2}>
             <Grid  item lg={12} xs={6}>
