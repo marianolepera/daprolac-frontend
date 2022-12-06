@@ -168,15 +168,27 @@ const DashBoardContainer = props => {
 
     ordenes.map(orden => {
       orden.tareas.map(tarea => {
-        if (tarea.fechaInicia != null && tarea.fechaFin == null) {
+        if (tarea.fechaFin == null) {
+          const dateUTC = tarea.fechaInicia ?
+              new Date(tarea.fechaInicia.substring(0,4), tarea.fechaInicia.substring(5,7) - 1, tarea.fechaInicia.substring(8,10),
+              tarea.fechaInicia.substring(11,13), tarea.fechaInicia.substring(14,16)) :
+              new Date(tarea.fechaIniciaProp.substring(0,4), tarea.fechaIniciaProp.substring(5,7) - 1, tarea.fechaIniciaProp.substring(8,10),
+                  tarea.fechaIniciaProp.substring(11,13), tarea.fechaIniciaProp.substring(14,16));
+
+          const minusHours = 1000 * 60 * 60 * 3;
+          const hoursDate = dateUTC.getTime() - minusHours;
+          const startDate = new Date(hoursDate);
+          const hoursEndDate = dateUTC.getTime() - (1000 * 60 * 60 * 2);
+          const endDate = new Date(hoursEndDate);
+
           tareasCalendario.push({
             id: id++,
             idTarea: tarea.idTarea,
             idUsuario: tarea.idUsuario,
             title: tarea.nombre + " - Fecha Inicial Propuesta: " +
                 tarea.fechaIniciaProp.substring(0,4) + "-" + tarea.fechaIniciaProp.substring(5,7) + "-" + tarea.fechaIniciaProp.substring(8,10),
-            startDate: new Date(tarea.fechaInicia.substring(0,4), tarea.fechaInicia.substring(5,7) - 1, tarea.fechaInicia.substring(8,10),
-                tarea.fechaInicia.substring(11,13), tarea.fechaInicia.substring(14,16)),
+            startDate: startDate,
+            endDate: endDate,
             members: [tarea.idUsuario]
           });
         }
